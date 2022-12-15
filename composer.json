@@ -1,6 +1,6 @@
 {
-    "name": "rohsyl/omega-plugin-skeleton",
-    "description": "OmegaCMS Plugin Skeleton",
+    "name": "rohsyl/omega-plugin-blog",
+    "description": "OmegaCMS Plugin Blug",
     "license": "GPL-3.0",
     "authors": [
         {
@@ -12,7 +12,7 @@
     "require": {
         "php": ">=8.0.2",
         "illuminate/contracts": "^9.0",
-        "laravelcollective/html": "^6.0"
+        "spatie/laravel-package-tools": "^1.13.0"
     },
     "require-dev": {
         "orchestra/testbench": "^7.0",
@@ -21,19 +21,19 @@
     },
     "autoload": {
         "psr-4": {
-            "rohsyl\\OmegaPlugin\\[PluginName]\\": "src",
-            "rohsyl\\OmegaPlugin\\[PluginName]\\\\Database\\Factories\\": "database/factories"
+            "rohsyl\\OmegaPlugin\\Blog\\": "src",
+            "rohsyl\\OmegaPlugin\\Blog\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "rohsyl\\OmegaPlugin\\[PluginName]\\Tests\\": "tests"
+            "rohsyl\\OmegaPlugin\\Blog\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "rohsyl\\OmegaPlugin\\[PluginName]\\ServiceProvider"
+                "rohsyl\\OmegaPlugin\\Blog\\ServiceProvider"
             ]
         }
     }

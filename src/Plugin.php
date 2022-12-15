@@ -1,14 +1,15 @@
 <?php
-namespace rohsyl\OmegaPlugin\[PluginName];
+namespace rohsyl\OmegaPlugin\Blog;
 
+use Illuminate\Support\Facades\Artisan;
 use rohsyl\OmegaCore\Utils\Common\Plugin\Form\PluginFormFactory;
 use rohsyl\OmegaCore\Utils\Common\Plugin\Plugin as OmegaPlugin;
 use rohsyl\OmegaCore\Utils\Common\Plugin\Type\TextSimple\TextSimple;
-use rohsyl\OmegaPlugin\[PluginName]\Http\Controllers\Overt\PluginController
+use rohsyl\OmegaPlugin\Blog\Http\Controllers\Overt\PluginController;
 
 class Plugin extends OmegaPlugin
 {
-    const NAME = '[PluginName]';
+    const NAME = 'blog';
 
     /**
      * Here name your plugin
@@ -20,7 +21,12 @@ class Plugin extends OmegaPlugin
 
     public function install() : bool {
 
-        $this->createForm();
+        Artisan::call('omega-plugin-blog:install');
+        Artisan::call('migrate');
+
+
+        //$this->createForm();
+
 
         return true;
     }
@@ -33,8 +39,7 @@ class Plugin extends OmegaPlugin
         });
 
     }
-	
-	
+
     function overtController(): string
     {
 		return PluginController::class;
