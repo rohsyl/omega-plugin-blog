@@ -6,6 +6,9 @@ use rohsyl\OmegaCore\Utils\Common\Plugin\Form\PluginFormFactory;
 use rohsyl\OmegaCore\Utils\Common\Plugin\Plugin as OmegaPlugin;
 use rohsyl\OmegaCore\Utils\Common\Plugin\Type\TextSimple\TextSimple;
 use rohsyl\OmegaPlugin\Blog\Http\Controllers\Overt\PluginController;
+use rohsyl\OmegaCore\Utils\Common\Plugin\Type\DropDown\DropDown;
+use rohsyl\OmegaPlugin\Blog\Plugin\Type\DropDown\Models\BlogCategoryDropDownModel;
+use rohsyl\OmegaPlugin\Bundle\Plugins\DividedContent\DataModel\DropDownPageDataModel;
 
 class Plugin extends OmegaPlugin
 {
@@ -21,12 +24,12 @@ class Plugin extends OmegaPlugin
 
     public function install() : bool {
 
-        Artisan::call('omega-plugin-blog:install');
-        Artisan::call('migrate');
+        if(!$this->isInstalled()) {
+            Artisan::call('migrate');
+            Artisan::call('omega-plugin-blog:install');
+        }
 
-
-        //$this->createForm();
-
+        $this->createForm();
 
         return true;
     }
@@ -34,8 +37,8 @@ class Plugin extends OmegaPlugin
     private function createForm() {
 
         $this->makeForm(function(PluginFormFactory $builder) {
-            $builder->form('[title]', true, true);
-			// ...
+            $builder->form('Blog list', true, true);
+            $builder->entry('categories', DropDown::class, ['model' => BlogCategoryDropDownModel::class, 'multiple' => true], 'Categories', 'You can choose from which categories to take blog posts. You can leave empty to get posts from all categories.', 1, false);
         });
 
     }

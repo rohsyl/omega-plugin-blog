@@ -28,10 +28,10 @@ class ServiceProvider extends PackageServiceProvider
                 '003_create_blog_comments_table',
                 '004_create_blog_category_blog_post_table',
             ])
+            ->runsMigrations(true)
             ->hasInstallCommand(function(InstallCommand $command) {
                 $command
-                    ->publishConfigFile()
-                    ->publishMigrations();
+                    ->publishConfigFile();
             })
             ;
     }

@@ -8,7 +8,8 @@
             "email": "syzin12@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": ">=8.0.2",
         "illuminate/contracts": "^9.0",
@@ -17,7 +18,8 @@
     "require-dev": {
         "orchestra/testbench": "^7.0",
         "nunomaduro/collision": "^6.0",
-        "phpunit/phpunit": "^9"
+        "phpunit/phpunit": "^9",
+        "rohsyl/omega-core": "dev-master"
     },
     "autoload": {
         "psr-4": {
@@ -36,5 +38,11 @@
                 "rohsyl\\OmegaPlugin\\Blog\\ServiceProvider"
             ]
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../omega-core"
+        }
+    ]
 }

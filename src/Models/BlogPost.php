@@ -36,4 +36,15 @@ class BlogPost extends Model
     public function blog_categories() {
         return $this->belongsToMany(BlogCategory::class);
     }
+
+    public function scopePublished($query) {
+        return $query
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+        ;
+    }
+
+    public function getIsPublishedAttribute() {
+        return isset($this->published_at) && $this->published_at->isBefore(now());
+    }
 }

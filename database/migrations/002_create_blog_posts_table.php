@@ -20,8 +20,8 @@ return new class extends Migration
 
             $table->string('slug')->nullable();
             $table->string('title')->nullable();
-            $table->string('introduction')->nullable();
-            $table->string('description')->nullable();
+            $table->text('introduction')->nullable();
+            $table->longText('description')->nullable();
 
             $table->dateTime('published_at')->nullable();
 

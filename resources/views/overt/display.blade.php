@@ -1,3 +1,3 @@
 <div>
-	Hello there !
+	@dump($posts)
 </div>
