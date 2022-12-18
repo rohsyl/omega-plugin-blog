@@ -47,4 +47,8 @@ class Plugin extends OmegaPlugin
     {
 		return PluginController::class;
 	}
+
+    function adminIndex(): string {
+        return route('omega-plugin-blog.index');
+    }
 }

@@ -11,4 +11,6 @@ Route::prefix('admin/plugins/blog')->middleware(['web'])->group(function() {
 
     Route::resource('posts', \rohsyl\OmegaPlugin\Blog\Http\Controllers\Admin\BlogPost\BlogPostController::class, ['as' => 'omega-plugin-blog'])->except('index');
 
+    Route::resource('categories', \rohsyl\OmegaPlugin\Blog\Http\Controllers\Admin\BlogCategory\BlogCategoryController::class, ['as' => 'omega-plugin-blog']);
+
 });

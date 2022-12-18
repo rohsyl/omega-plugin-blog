@@ -37,6 +37,10 @@ class BlogPost extends Model
         return $this->belongsToMany(BlogCategory::class);
     }
 
+    public function blog_comments() {
+        return $this->hasMany(BlogComment::class);
+    }
+
     public function scopePublished($query) {
         return $query
             ->whereNotNull('published_at')

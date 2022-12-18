@@ -10,12 +10,13 @@ use rohsyl\OmegaPlugin\Blog\Http\Requests\Admin\BlogPost\UpdateBlogPostRequest;
 use rohsyl\OmegaPlugin\Blog\Models\BlogCategory;
 use rohsyl\OmegaPlugin\Blog\Models\BlogPost;
 use rohsyl\OmegaPlugin\Blog\Plugin\Type\DropDown\Models\BlogCategoryDropDownModel;
+use rohsyl\OmegaCore\Utils\Common\Facades\Plugin;
+use rohsyl\OmegaCore\Utils\Common\Plugin\Type\MediaChooser\MediaChooser;
 
 class BlogPostController extends Controller
 {
     public function create()
     {
-
        return view('omega-plugin-blog::admin.blog-post.create');
     }
 
@@ -42,6 +43,14 @@ class BlogPostController extends Controller
 
     public function update(UpdateBlogPostRequest $request, BlogPost $post)
     {
-        return redirect()->route('omega-plugin-blog.edit', $post);
+        $inputs = $request->validated();
+        $inputs['featured_media_id'] = Plugin::types()->getRequest(MediaChooser::class, ['featured_media_id']);
+
+        $post->update($inputs);
+
+        $post->blog_categories()->detach();
+        $post->blog_categories()->attach($inputs['categories']);
+
+        return redirect()->route('omega-plugin-blog.posts.edit', $post);
     }
 }

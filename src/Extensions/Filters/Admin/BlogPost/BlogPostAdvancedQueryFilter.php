@@ -20,7 +20,9 @@ class BlogPostAdvancedQueryFilter extends AdvancedQueryFilter
 
     public function finalize($query)
     {
-        return $query->with(['featured_media']);
+        return $query
+            ->withCount('blog_comments')
+            ->with(['featured_media']);
     }
 
     public function plain($query, $text) {
