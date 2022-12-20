@@ -25,7 +25,7 @@ class Plugin extends OmegaPlugin
     public function install() : bool {
 
         if(!$this->isInstalled()) {
-            Artisan::call('migrate');
+            Artisan::call('migrate', ['--force' => true]);
             Artisan::call('omega-plugin-blog:install');
         }
 
