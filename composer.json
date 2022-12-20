@@ -38,11 +38,5 @@
                 "rohsyl\\OmegaPlugin\\Blog\\ServiceProvider"
             ]
         }
-    },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../omega-core"
-        }
-    ]
+    }
 }
