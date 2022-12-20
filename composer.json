@@ -18,8 +18,7 @@
     "require-dev": {
         "orchestra/testbench": "^7.0",
         "nunomaduro/collision": "^6.0",
-        "phpunit/phpunit": "^9",
-        "rohsyl/omega-core": "dev-master"
+        "phpunit/phpunit": "^9"
     },
     "autoload": {
         "psr-4": {
