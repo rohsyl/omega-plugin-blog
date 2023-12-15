@@ -23,10 +23,10 @@ class ServiceProvider extends PackageServiceProvider
             ->hasViews('omega-plugin-blog')
             ->hasRoute('web')
             ->hasMigrations([
-                '001_create_blog_categories_table',
-                '002_create_blog_posts_table',
-                '003_create_blog_comments_table',
-                '004_create_blog_category_blog_post_table',
+                '2022_06_06_060002_001_create_blog_categories_table',
+                '2022_06_06_060002_002_create_blog_posts_table',
+                '2022_06_06_060002_003_create_blog_comments_table',
+                '2022_06_06_060002_004_create_blog_category_blog_post_table',
             ])
             ->runsMigrations(true)
             ->hasInstallCommand(function(InstallCommand $command) {
